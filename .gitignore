@@ -8,7 +8,9 @@ __pycache__/
 .ipynb_checkpoints/
 build/
 dist/
-docs/
+
+# Local research reports, derived tables, and publication figures
+/docs/
 
 # Credentials; keep the public template
 .env
@@ -22,7 +24,7 @@ docs/
 .cache/
 *.log
 
-# Legacy local snapshots; public dependency versions are in docs/environment.md
+# Legacy local snapshots; public dependencies are in pyproject.toml and uv.lock
 /requirements-installed.txt
 /environment-installed.json
 

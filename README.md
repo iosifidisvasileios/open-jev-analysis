@@ -10,7 +10,7 @@
 ![uv](https://img.shields.io/badge/Dependencies-uv-DE5FE9)
 ![Models](https://img.shields.io/badge/Open--Jev-2B%20%7C%209B-2563EB)
 
-[📊 Findings](docs/analysis/blogpost_analysis.md) · [🚀 Quick start](#quick-start) · [🧪 Experiments](#experiments) · [📖 Methodology](docs/experiment-guide.md)
+[🚀 Quick start](#quick-start) · [🧪 Experiments](#experiments) · [📊 Plot results](#plot-results) · [📁 Repository guide](#repository-guide)
 
 </div>
 
@@ -34,15 +34,9 @@
 
 ## 📈 A Look at the Results
 
-Adding a judge can help some rankings and weaken others. The figure shows changes against each retriever's original order, using matched queries and candidates.
+The experiments show task-dependent strengths and limitations. Adding a judge can improve some rankings and weaken others; high classification accuracy can also hide poor detection of rare positive examples.
 
-![Change in nDCG@10 after Open-Jev reranking](docs/analysis/figures/reranking_ndcg_changes.png)
-
-**📖 Read the evidence:**
-- [Combined analysis](docs/analysis/blogpost_analysis.md)
-- [Classification](docs/analysis/classification_analysis.md)
-- [Retrieval](docs/analysis/rag_analysis.md)
-- [Methodology audit](docs/analysis/methodology_audit.md)
+This checkout contains the experiment code and configurations. Study reports, publication figures and derived analysis tables under `docs/`, along with the original datasets and run outputs, are local artifacts excluded from Git.
 
 ### Study Status
 
@@ -50,6 +44,8 @@ Adding a judge can help some rankings and weaken others. The figure shows change
 - ⚠️ **59/64** completed retrieval jobs (5 failed on memory/input length)
 
 > Results show task-dependent strengths and limitations; they do not establish universal decision reliability or calibrated confidence on new tasks.
+
+<a id="quick-start"></a>
 
 ## 🚀 Quick Start
 
@@ -85,7 +81,9 @@ checkpoints/
 
 ⚠️ **GPU inference** requires suitable NVIDIA hardware and drivers. Review device placement, context length and batch size in the relevant configuration; the saved 9B settings reflect the original workstation.
 
-**Classification prompt search** also uses an Azure proposer configured through [.env.example](.env.example). Retrieval and plotting do not need Azure. See [environment notes](docs/environment.md) for versions and [the experiment guide](docs/experiment-guide.md) for checkpoint revisions.
+**Classification prompt search** also uses an Azure proposer configured through [.env.example](.env.example). Retrieval and plotting do not need Azure. Dependency versions are pinned in [pyproject.toml](pyproject.toml) and [uv.lock](uv.lock). Record the checkpoint revision you download when reporting a new run.
+
+<a id="experiments"></a>
 
 ## 🧪 Experiments
 
@@ -167,31 +165,27 @@ bash scripts/run_all_rag_datasets.sh --output-root runs/rag-study \
 
 > 🚨 **Critical:** **ArguAna has a known protocol issue** - the current runner retains the query's same-ID document. The main analysis excludes ArguAna; its posthoc sensitivity is not a corrected top-20 experiment. Rebuild eligible candidates before making standard ArguAna benchmark claims.
 
-## 📊 Reproduce the Figures
+<a id="plot-results"></a>
 
-Curated reports, tables and figures are included in [docs/analysis](docs/analysis/README.md). Original run outputs and datasets are local artifacts and may be absent in a fresh checkout.
+## 📊 Plot Your Results
 
-### With Original Study Folders
-
-```bash
-# Classification
-uv run python scripts/plots/plot_dataset_spiders.py --suite-root runs/realistic-datasets
-uv run python scripts/plots/plot_guardrail_aggregate.py --suite-root runs/realistic-datasets
-
-# Retrieval quality and latency
-uv run python scripts/plots/plot_rag_spiders.py --suite-root runs/rag-under-60k-latest
-uv run python scripts/plots/plot_rag_latency.py --suite-root runs/rag-under-60k-latest
-```
-
-> Classification plotters compare baseline and search-winner prompts under their own training thresholds. RAG plotters use matched completed collections and retain the saved ArguAna results. The [combined analysis](docs/analysis/blogpost_analysis.md) supplies validation-selected classification figures and the ArguAna-excluded retrieval comparison.
-
-### From Included Derived Tables
-
-To rebuild the publication figures from the **included derived tables**, without the original runs:
+After running the experiments above, generate plots from your local output folders:
 
 ```bash
-uv run python docs/analysis/build_blog_figures.py
+# Classification: use the output root from the all-task example
+uv run python scripts/plots/plot_dataset_spiders.py --suite-root runs/classification-study
+uv run python scripts/plots/plot_guardrail_aggregate.py --suite-root runs/classification-study
+
+# Retrieval quality and latency: use the output root from the collection sweep
+uv run python scripts/plots/plot_rag_spiders.py --suite-root runs/rag-study
+uv run python scripts/plots/plot_rag_latency.py --suite-root runs/rag-study
 ```
+
+> Classification plotters compare baseline and search-winner prompts under their own training thresholds; these are not necessarily the validation-selected deployment prompts. RAG plotters use matched completed collections and retain any saved ArguAna results. Apply the protocol caveat above when interpreting them.
+
+These commands require completed local runs. The original study outputs and publication-figure builder are not included in this checkout.
+
+<a id="repository-guide"></a>
 
 ## 📁 Repository Guide
 
@@ -200,16 +194,14 @@ uv run python docs/analysis/build_blog_figures.py
 | [config/](config/) | Task definitions, split settings, prompts and model configuration |
 | [jev_guardrails/](jev_guardrails/) | Shared data, inference, scoring and comparison helpers |
 | [scripts/](scripts/) | Experiment launchers and plotting entry points |
-| [docs/analysis/](docs/analysis/README.md) | Reports, derived tables, figures and reproducible analyses |
-| [docs/experiment-guide.md](docs/experiment-guide.md) | Full protocols, arguments and output formats |
-| [docs/environment.md](docs/environment.md) | Recorded environment versions and runtime notes |
-| [HateXplain notebook](dspy_hatexplain_openjev_client.ipynb) | Additional interactive three-class study |
+| [pyproject.toml](pyproject.toml) / [uv.lock](uv.lock) | Dependency groups and locked environment resolution |
+| [.env.example](.env.example) | Azure proposer configuration template |
 
 ### Execution Notes
 
 - The root Python runners handle classification execution and comparison
 - Bash launchers automatically use `.venv`; set `JEV_PYTHON=/path/to/python` to choose another interpreter
-- Downloaded data, checkpoints, vector caches, environments, credentials and full run outputs are Git-ignored
+- Local reports (`docs/`), downloaded data, checkpoints, vector caches, environments, credentials and full run outputs are Git-ignored; they are created or supplied locally
 - Source manifests record revisions and selections
 
 > 📝 **When reporting results:** Identify the suite, decision rule, completed cohort and aggregation weights; source access and redistribution conditions still apply.
@@ -218,6 +210,6 @@ uv run python docs/analysis/build_blog_figures.py
 
 <div align="center">
 
-**[Open-Jev Project](https://github.com/Zefan-Cai/Open-Jev)** · **[Findings](docs/analysis/blogpost_analysis.md)** · **[Experiment Guide](docs/experiment-guide.md)**
+**[Open-Jev Project](https://github.com/Zefan-Cai/Open-Jev)** · **[Quick Start](#quick-start)** · **[Experiments](#experiments)**
 
 </div>
