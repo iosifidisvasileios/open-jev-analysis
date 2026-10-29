@@ -1,0 +1,97 @@
+{
+  "msmarco": {
+    "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/msmarco.zip",
+    "md5": "444067daf65d982533ea17ebd59501e4",
+    "access_instructions": null
+  },
+  "trec-covid": {
+    "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/trec-covid.zip",
+    "md5": "ce62140cb23feb9becf6270d0d1fe6d1",
+    "access_instructions": null
+  },
+  "nfcorpus": {
+    "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/nfcorpus.zip",
+    "md5": "a89dba18a62ef92f7d323ec890a0d38d",
+    "access_instructions": null
+  },
+  "bioasq": {
+    "url": null,
+    "md5": null,
+    "access_instructions": "https://github.com/beir-cellar/beir/blob/main/examples/dataset#2-bioasq"
+  },
+  "nq": {
+    "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/nq.zip",
+    "md5": "d4d3d2e48787a744b6f6e691ff534307",
+    "access_instructions": null
+  },
+  "hotpotqa": {
+    "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/hotpotqa.zip",
+    "md5": "f412724f78b0d91183a0e86805e16114",
+    "access_instructions": null
+  },
+  "fiqa": {
+    "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/fiqa.zip",
+    "md5": "17918ed23cd04fb15047f73e6c3bd9d9",
+    "access_instructions": null
+  },
+  "signal1m": {
+    "url": null,
+    "md5": null,
+    "access_instructions": "https://github.com/beir-cellar/beir/blob/main/examples/dataset#4-signal-1m"
+  },
+  "trec-news": {
+    "url": null,
+    "md5": null,
+    "access_instructions": "https://github.com/beir-cellar/beir/blob/main/examples/dataset#1-trec-news"
+  },
+  "robust04": {
+    "url": null,
+    "md5": null,
+    "access_instructions": "https://github.com/beir-cellar/beir/blob/main/examples/dataset#3-robust04"
+  },
+  "arguana": {
+    "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/arguana.zip",
+    "md5": "8ad3e3c2a5867cdced806d6503f29b99",
+    "access_instructions": null
+  },
+  "webis-touche2020": {
+    "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/webis-touche2020.zip",
+    "md5": "46f650ba5a527fc69e0a6521c5a23563",
+    "access_instructions": null
+  },
+  "cqadupstack": {
+    "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/cqadupstack.zip",
+    "md5": "4e41456d7df8ee7760a7f866133bda78",
+    "access_instructions": null
+  },
+  "quora": {
+    "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/quora.zip",
+    "md5": "18fb154900ba42a600f84b839c173167",
+    "access_instructions": null
+  },
+  "dbpedia-entity": {
+    "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/dbpedia-entity.zip",
+    "md5": "c2a39eb420a3164af735795df012ac2c",
+    "access_instructions": null
+  },
+  "scidocs": {
+    "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/scidocs.zip",
+    "md5": "38121350fc3a4d2f48850f6aff52e4a9",
+    "access_instructions": null
+  },
+  "fever": {
+    "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/fever.zip",
+    "md5": "5a818580227bfb4b35bb6fa46d9b6c03",
+    "access_instructions": null
+  },
+  "climate-fever": {
+    "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/climate-fever.zip",
+    "md5": "8b66f0a9126c521bae2bde127b4dc99d",
+    "access_instructions": null
+  },
+  "scifact": {
+    "url": "https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/scifact.zip",
+    "md5": "5f7d1de60b170fc8027bb7898e2efca1",
+    "access_instructions": null
+  }
+}

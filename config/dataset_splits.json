@@ -1,0 +1,12 @@
+{
+  "hatexplain": {
+    "train_limit": 1024,
+    "test_limit": 1024,
+    "manifest_name": "hatexplain-1024-v1"
+  },
+  "deepset": {
+    "train_limit": null,
+    "test_limit": null,
+    "manifest_name": "deepset-full-v1"
+  }
+}

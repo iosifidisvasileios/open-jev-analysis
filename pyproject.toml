@@ -1,0 +1,34 @@
+[project]
+name = "open-jev-analysis"
+version = "0.1.0"
+description = "Research on Open-Jev classification and retrieval reranking"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+main = [
+    "numpy==2.5.4",
+    "pandas==3.1.0",
+    "matplotlib==3.11.2",
+    "datasets==4.8.5",
+    "dspy==3.4.1",
+    "openai==3.37.0",
+    "python-dotenv==1.2.4",
+    "ipykernel==7.4.0",
+    "torch==2.14.1",
+    "transformers==5.10.2",
+    "accelerate==1.15.0",
+    "huggingface-hub==1.33.0",
+    "peft==0.21.2",
+    "open-jev @ git+https://github.com/Zefan-Cai/Open-Jev@bd4118882f733574a3250a4b65fe4d884130c08b",
+]
+dense = [
+    "sentence-transformers==6.2.0",
+    "transformers==5.21.0",
+    "torch==2.14.1",
+]
+
+[tool.uv]
+package = false
+default-groups = ["main"]
+conflicts = [[{ group = "main" }, { group = "dense" }]]

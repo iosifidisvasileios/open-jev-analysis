@@ -1,0 +1,33 @@
+# Local environments and generated Python files
+.venv/
+.venv-dense/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+build/
+dist/
+docs/
+
+# Credentials; keep the public template
+.env
+.env.*
+!.env.example
+
+# Local model weights, datasets, caches, manifests, and experiment outputs
+/checkpoints/
+/data/
+/runs/
+.cache/
+*.log
+
+# Legacy local snapshots; public dependency versions are in docs/environment.md
+/requirements-installed.txt
+/environment-installed.json
+
+# Editor and OS state
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
